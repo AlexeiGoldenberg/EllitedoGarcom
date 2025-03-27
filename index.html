@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <title>Ellite do Garçom - Serviços Profissionais para Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css"> <!-- Arquivo CSS externo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+
+<!-- Loading Overlay -->
+<!-- Exemplo com Font Awesome -->
+<!-- Loading Overlay -->
+<div class="loading-overlay">
+    <div class="loading-spinner"></div>
+</div>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#home" class="logo-link">
+                <img 
+                    src="/imagens/Ellte Logo.png"  
+                    alt="Logo Ellite do Garçom" 
+                    class="logo-img"
+                >
+                <h1 class="logo-text">Ellite do Garçom</h1>
+            </a>
+        </div>
+<!-- Menu e Botão Agora em um Container Separado -->
+<div class="header-right">
+    <nav class="main-nav">
+    <ul class="nav-list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#sobre">Sobre</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#galeria">Galeria</a></li>
+        <li><a href="#parcerias">Parcerias</a></li>
+        <li><a href="#feedback">Feedback</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contato">Contato</a></li>
+    </ul>
+    <button class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </button>
+    </nav>
+        <button class="cta-button">Solicite um Orçamento</button>
+</div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id= "home" class="hero">
+        <div class="hero-content">
+            <h1>"Garçons de Elite. Eventos Memoráveis."</h1>
+            <a 
+    href="https://wa.me/5551993293681?text=Olá,%20gostaria%20de%20solicitar%20um%20orçamento%20para%20meu%20evento" 
+    class="cta-button"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <i class="fab fa-whatsapp"></i> Fale Conosco
+</a>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="about">
+        <h2>Sobre Nós</h2>
+        <article>
+            <p>A Ellite do Garçom oferece excelência em seus serviços, atendendo eventos corporativos, casamentos, aniversários, coquetéis e gerenciamento de festas. Especialista na prestação de serviços de grandes e pequenos eventos, conta com uma equipe séria, profissional e competente.</p>
+            <img 
+            src="imagens/Equipe 1.png"  
+            alt="Equipe Ellite do Garçom" 
+            class="team-photo"
+            loading="lazy"  
+        >
+        </article>
+    </section>
+
+<!-- SERVIÇOS -->
+<section id= "servicos" class="services">
+    <h2 class="gold-gradient">Nossos Serviços</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <i class="fas fa-glass-cheers"></i>
+            <h3>Casamentos</h3>
+            <p>Serviço completo para cerimônias e recepções.</p>
+        </div>
+        <!-- Repetir para outros serviços -->
+        <div class="service-card">
+            <i class="fas fa-briefcase"></i>
+            <h3>Eventos Corporativos</h3>
+            <p>Profissionalismo para reuniões e confraternizações.</p>
+        </div>
+    </div>
+</section>
+
+<!-- GALERIA -->
+<section id= "galeria" class="gallery">
+    <h2>Nossa Galeria</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"></div> <!-- 6x itens com placeholders -->
+        <div class="gallery-item"></div>
+        <!-- ... -->
+    </div>
+</section>
+
+<!-- PARCERIAS -->
+<section id= "parcerias" class="partners">
+    <h2>Parcerias</h2>
+    <div class="partners-grid">
+        <div class="partner-logo"></div> <!-- 4x placeholders -->
+        <!-- ... -->
+    </div>
+</section>
+
+<!-- FEEDBACK -->
+<section id="feedback" class="testimonials">
+    <h2>Feedback dos Clientes</h2>
+    <div class="testimonial-slider">
+        <div class="testimonial-card">
+            <p>"Profissionais impecáveis! Total organização."</p>
+            <h4>Maria Silva - Casamento</h4>
+        </div>
+        <!-- ... -->
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id= "faq" class="faq">
+    <h2>Perguntas Frequentes</h2>
+    <div class="faq-accordion">
+        <details>
+            <summary>Quantos garçons são necessários por convidado?</summary>
+            <p>Recomendamos 1 garçom para cada 30 convidados.</p>
+        </details>
+        <!-- ... -->
+    </div>
+</section>
+
+<!-- CONTATO -->
+<section id= "contato" class="contact">
+    <h2>Contato</h2>
+    <form class="contact-form">
+        <input type="text" placeholder="Nome" required>
+        <input type="email" placeholder="E-mail" required>
+        <input type="tel" placeholder="Telefone">
+        <select>
+            <option>Tipo de Evento</option>
+            <option>Casamento</option>
+            <option>Evento Corporativo</option>
+            <option>Festa Infantil</option>
+            <option>Gerência de Festas</option>
+            <!-- ... -->
+        </select>
+        <textarea placeholder="Mensagem" required></textarea>
+        <button type="submit">Enviar Mensagem</button>
+    </form>
+</section>
+
+    
+    <!-- FOOTER -->
+    <footer>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/ellitedogarcom" target="_blank">
+                <i class="fab fa-facebook"></i>
+            </a>
+            <a href="https://www.instagram.com/ellitedogarcom/" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/SEUNUMERO" target="_blank">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+        <p>&copy; 2025 Ellite do Garçom - Todos os direitos reservados</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
