@@ -361,33 +361,6 @@ header {
     margin: 2rem 0;
 }
 
-/* === SERVIÇOS === */
-.services {
-    padding: 4rem 5%;
-    background: var(--black);
-}
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-.service-card {
-    background: rgba(255, 215, 0, 0.1);
-    padding: 2rem;
-    border: 1px solid var(--gold);
-    text-align: center;
-    border-radius: 8px;
-}
-
-.service-card i {
-    font-size: 2.5rem;
-    color: var(--gold);
-    margin-bottom: 1rem;
-}
-
 .team-photo {
     width: 100%;
     max-width: 600px; /* Largura máxima */
@@ -414,6 +387,51 @@ header {
     }
 }
 
+/* === SERVIÇOS === */
+.services {
+    padding: 4rem 5%;
+    background: var(--black);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.service-card {
+    background: rgba(255, 215, 0, 0.1);
+    padding: 2rem;
+    border: 1px solid var(--gold);
+    text-align: center;
+    border-radius: 8px;
+    transition: all 0.3s ease; /* Adiciona transição suave para todas as propriedades */
+    cursor: pointer; /* Muda o cursor para "mãozinha" */
+}
+
+.service-card i {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease; /* Transição apenas para o ícone */
+}
+
+/* Efeito no ícone */
+.service-card:hover i {
+    transform: scale(1.1); /* Aumenta o ícone levemente */
+    color: rgba(255, 215, 0, 0.9); /* Cor mais intensa */
+}
+
+.service-card h3 {
+    transition: color 0.3s ease; /* Transição para o título */
+}
+
+.service-card:hover h3 {
+    color: var(--gold); /* Título dourado ao passar o mouse */
+}
+
+
 /* === GALERIA === */
 .gallery {
     padding: 4rem 5%;
@@ -423,15 +441,28 @@ header {
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
 }
 
 .gallery-item {
-    aspect-ratio: 1;
-    background: #ddd; /* Placeholder */
-    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    aspect-ratio: 1/1; /* Proporção quadrada (ajuste conforme necessário) */
+    transition: transform 0.5s ease;
 }
 
 /* === PARCERIAS === */
