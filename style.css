@@ -467,22 +467,125 @@ header {
 
 /* === PARCERIAS === */
 .partners {
-    padding: 4rem 5%;
+    padding: 6rem 5%;
     background: var(--black);
+    text-align: center;
+    overflow: hidden;
+}
+
+.partners h2 {
+    margin-bottom: 4rem;
+    position: relative;
 }
 
 .partners-grid {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 3rem;
-    flex-wrap: wrap;
-    margin-top: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.partner-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.partner-card.animated {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .partner-logo {
-    width: 150px;
-    height: 80px;
-    background: #333; /* Placeholder */
+    width: 180px;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    background: rgba(212, 175, 55, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.partner-logo img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.partner-name {
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Efeitos hover */
+.partner-card:hover .partner-logo {
+    background: rgba(212, 175, 55, 0.1);
+    border-color: var(--gold);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+}
+
+.partner-card:hover .partner-logo img {
+    transform: scale(1.1);
+}
+
+.partner-card:hover .partner-name {
+    color: var(--gold);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+    
+    .partner-logo {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partners {
+        padding: 4rem 5%;
+    }
+    
+    .partners-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        gap: 2rem;
+    }
+    
+    .partner-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 2rem;
+    }
+    
+    .partner-logo {
+        width: 100px;
+        height: 100px;
+        margin-bottom: 0;
+        flex-shrink: 0;
+    }
+    
+    .partner-name {
+        margin-top: 0;
+    }
 }
 
 /* === FEEDBACK === */
@@ -587,6 +690,70 @@ footer {
     transform: scale(1.05);
 }
 
+/* Botão Flutuante do WhatsApp Dourado */
+.gold-whatsapp {
+    background: var(--gold);
+    color: var(--black);
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s, opacity 0.3s;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    white-space: nowrap;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+.gold-whatsapp i {
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+/* Efeitos hover e active */
+.gold-whatsapp:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+.gold-whatsapp:active {
+    transform: scale(0.95);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .gold-whatsapp {
+        padding: 0.8rem;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .gold-whatsapp .whatsapp-text {
+        display: none;
+    }
+    
+    .gold-whatsapp:hover .whatsapp-text {
+        display: inline;
+        position: absolute;
+        right: 100%;
+        margin-right: 15px;
+        background: var(--gold);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        white-space: nowrap;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    }
+}
+
+
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .logo-text {
@@ -595,6 +762,41 @@ footer {
 
     .hero h1 {
         font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .partner-logo {
+        width: 120px;
+        height: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-grid {
+        grid-template-columns: 1fr;
+        max-width: 300px;
+    }
+    
+    .partner-card {
+        flex-direction: row;
+        text-align: left;
+        gap: 1rem;
+    }
+    
+    .partner-logo {
+        margin-bottom: 0;
+        width: 80px;
+        height: 50px;
+    }
+    
+    .partner-name {
+        margin-top: 0;
     }
 }
 /* === RESPONSIVIDADE ADICIONAL === */

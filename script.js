@@ -61,28 +61,72 @@ document.addEventListener('click', (e) => {
     if (!hamburger.contains(e.target) && !navList.contains(e.target)) {
         hamburger.classList.remove('active');
         navList.classList.remove('active');
-    
-        if (navList.classList.contains('active')) {
-            hamburger.classList.remove('active');
-            navList.classList.remove('active');
-        }
     }
 });
 
 // Loading Screen
 window.addEventListener('load', () => {
     const loadingOverlay = document.querySelector('.loading-overlay');
-    
-    // Esconde o loading após 1s (ou quando tudo estiver carregado)
     setTimeout(() => {
         loadingOverlay.classList.add('hidden');
     }, 1000);
 });
 
-// Fallback: Caso o evento 'load' não dispare
 setTimeout(() => {
     const loadingOverlay = document.querySelector('.loading-overlay');
     if (loadingOverlay && !loadingOverlay.classList.contains('hidden')) {
         loadingOverlay.classList.add('hidden');
     }
 }, 3000);
+
+// ========== ANIMAÇÃO DOS PARCEIROS ==========
+function initPartnersAnimation() {
+    const partnersSection = document.querySelector('.partners');
+    if (!partnersSection) return;
+
+    const partnerCards = document.querySelectorAll('.partner-card');
+    if (partnerCards.length === 0) return;
+
+    // Reset inicial
+    partnerCards.forEach(card => card.classList.remove('animated'));
+
+    function animateCards() {
+        partnerCards.forEach((card, index) => {
+            setTimeout(() => {
+                card.classList.add('animated');
+            }, index * 150);
+        });
+    }
+
+    // Verifica se já está visível
+    function isSectionVisible() {
+        const rect = partnersSection.getBoundingClientRect();
+        return (
+            rect.top <= window.innerHeight * 0.75 &&
+            rect.bottom >= 0
+        );
+    }
+
+    // Observer para disparar quando a seção entrar na viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCards();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    observer.observe(partnersSection);
+
+    // Se já estiver visível ao carregar
+    if (isSectionVisible()) {
+        animateCards();
+    }
+}
+
+// Inicializa quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', initPartnersAnimation);
