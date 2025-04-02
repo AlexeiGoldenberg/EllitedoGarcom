@@ -94,38 +94,24 @@ function initPartnersAnimation() {
         partnerCards.forEach((card, index) => {
             setTimeout(() => {
                 card.classList.add('animated');
-            }, index * 150);
+            }, index * 400); // Atraso aumentado para 400ms por logo
         });
-    }
-
-    // Verifica se já está visível
-    function isSectionVisible() {
-        const rect = partnersSection.getBoundingClientRect();
-        return (
-            rect.top <= window.innerHeight * 0.75 &&
-            rect.bottom >= 0
-        );
     }
 
     // Observer para disparar quando a seção entrar na viewport
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                animateCards();
+                setTimeout(animateCards, 300); // Espera 300ms antes de iniciar
                 observer.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.1,
-        rootMargin: '0px 0px -100px 0px'
+        threshold: 0.3, // Agora espera que pelo menos 30% da seção esteja visível
+        rootMargin: '0px 0px -50px 0px' // Reduz a margem inferior para iniciar a animação um pouco depois
     });
 
     observer.observe(partnersSection);
-
-    // Se já estiver visível ao carregar
-    if (isSectionVisible()) {
-        animateCards();
-    }
 }
 
 // Inicializa quando o DOM estiver pronto
