@@ -466,7 +466,7 @@ header {
 
 /* === PARCERIAS === */
 .partners {
-    padding: 6rem 5%;
+    padding: 4rem 5%;
     background: var(--black);
     text-align: center;
     overflow: hidden;
@@ -479,19 +479,19 @@ header {
 
 .partners-description {
     color: rgba(255, 215, 0, 0.8); /* Dourado claro */
-    font-size: 1.2rem; /* Ajuste o tamanho conforme necessário */
-    text-align: center; /* Centraliza o texto */
-    margin-bottom: 2rem; /* Espaço entre o texto e os logos */
+    font-size: 1.2rem;
+    text-align: center;
+    margin-bottom: 2rem;
     max-width: 800px;
     margin: 0 auto 3rem;
-    text-align: center;
     opacity: 0.8;
     line-height: 1.6;
 }
+
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
+    grid-template-columns: repeat(3, 1fr); /* 3 colunas em telas grandes */
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -505,32 +505,33 @@ header {
     opacity: 0;
     transform: translateY(30px);
     transition: all 0.6s ease;
+    width: 100%;
 }
 
 .partner-card.animated {
     opacity: 1;
     transform: translateY(0);
-    transition: all 1s ease; /* Tempo de transição aumentado para 1s */
+    transition: all 1s ease;
 }
 
 .partner-logo {
-    width: 180px; /* Mantém um tamanho adequado */
-    height: 180px;
+    width: 100%; /* Ocupa toda a largura da coluna */
+    max-width: 180px;
+    aspect-ratio: 1 / 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
-    background: rgba(255, 215, 0, 0.1); /* Novo fundo dourado */
+    margin-bottom: 1rem;
+    background: rgba(255, 215, 0, 0.1);
     border: 1px solid var(--gold);
     border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2); /* Efeito de destaque */
+    box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
     transition: all 0.3s ease;
 }
 
 .partner-logo img {
     width: 80%;
-    height: 80%;
+    height: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
 }
@@ -541,6 +542,7 @@ header {
     font-weight: 500;
     margin-top: 1rem;
     transition: color 0.3s ease;
+    text-align: center;
 }
 
 /* Efeitos hover */
@@ -561,64 +563,217 @@ header {
 /* Responsividade */
 @media (max-width: 1024px) {
     .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
-    }
-    
-    .partner-logo {
-        width: 160px;
-        height: 160px;
+        grid-template-columns: repeat(2, 1fr); /* 2 colunas em tablets */
     }
 }
 
 @media (max-width: 768px) {
     .partners {
-        padding: 6rem 5%; /* Mantém a seção mais longa */
+        padding: 6rem 5%;
     }
 
     .partners-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Logos maiores */
-        max-width: 600px;
-        gap: 3rem; /* Espaçamento adequado */
-    }
-
-    .partner-card {
-        flex-direction: column; /* Mantém o layout empilhado */
-        text-align: center;
-        gap: 2rem;
+        grid-template-columns: 1fr; /* 1 coluna no mobile */
+        max-width: 90%;
+        gap: 3rem;
     }
 
     .partner-logo {
-        width: 180px; /* Aumenta os logos */
-        height: 180px;
-        margin-bottom: 1.5rem;
-        background: rgba(255, 215, 0, 0.1); /* Fundo dourado suave */
-        border: 1px solid var(--gold);
-        box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2); /* Efeito de destaque */
+        width: 90%; /* Ocupa quase toda a tela */
+        max-width: 250px;
     }
 
     .partner-name {
-        font-size: 1.3rem; /* Tamanho maior para melhor legibilidade */
+        font-size: 1.3rem;
     }
 }
 /* === FEEDBACK === */
+/* SEÇÃO DE FEEDBACKS */
 .testimonials {
-    padding: 4rem 5%;
+    padding: 6rem 5%;
     background: var(--white);
+    color: var(--black);
+    text-align: center;
+    position: relative;
+}
+
+.testimonials h2 {
+    margin-bottom: 4rem;
     color: var(--black);
 }
 
-.testimonial-slider {
-    display: grid;
+.testimonials-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 3rem;
+    padding: 3rem 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.testimonials-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.testimonial-card {
+    min-width: 380px;
+    scroll-snap-align: center;
+    background: var(--black);
+    color: var(--white);
+    padding: 3rem;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+}
+
+.stars {
+    color: var(--gold);
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    letter-spacing: 3px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.testimonial-text::before,
+.testimonial-text::after {
+    content: '"';
+    color: var(--gold);
+    font-size: 1.5rem;
+    font-family: serif;
+}
+
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: auto;
+}
+
+.client-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--gold);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.client-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+
+.client-name {
+    font-weight: 600;
+    color: var(--gold);
+    font-size: 1.1rem;
+}
+
+.client-role {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 2rem;
     margin-top: 2rem;
 }
 
-.testimonial-card {
+.prev-btn, .next-btn {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.prev-btn:hover, .next-btn:hover {
+    transform: scale(1.1);
     background: var(--black);
-    color: var(--white);
-    padding: 2rem;
-    border-radius: 8px;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+}
+
+.dots-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--gold);
+    transform: scale(1.2);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .testimonial-card {
+        min-width: 280px;
+        padding: 2rem;
+    }
+    
+    .client-photo {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimonials {
+        padding: 4rem 5%;
+    }
+    
+    .client-info {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .client-details {
+        align-items: center;
+    }
 }
 
 /* === FAQ === */
@@ -778,47 +933,9 @@ footer {
     }
 }
 
-@media (max-width: 768px) {
-    .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
-    
-    .partner-logo {
-        width: 120px;
-        height: 70px;
-    }
-}
-
-@media (max-width: 480px) {
-    .partners-grid {
-        grid-template-columns: 1fr;
-        max-width: 300px;
-    }
-    
-    .partner-card {
-        flex-direction: row;
-        text-align: left;
-        gap: 1rem;
-    }
-    
-    .partner-logo {
-        margin-bottom: 0;
-        width: 80px;
-        height: 50px;
-    }
-    
-    .partner-name {
-        margin-top: 0;
-    }
-}
 /* === RESPONSIVIDADE ADICIONAL === */
 @media (max-width: 768px) {
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-    }
-
-    .testimonial-slider {
-        grid-template-columns: 1fr;
     }
 }
