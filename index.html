@@ -316,22 +316,23 @@
 </section>
 
 <!-- CONTATO -->
-<section id= "contato" class="contact">
+<section id="contato" class="contact">
     <h2>Contato</h2>
-    <form class="contact-form">
-        <input type="text" placeholder="Nome" required>
-        <input type="email" placeholder="E-mail" required>
-        <input type="tel" placeholder="Telefone">
-        <select>
-            <option>Tipo de Evento</option>
-            <option>Casamento</option>
-            <option>Evento Corporativo</option>
-            <option>Festa Infantil</option>
-            <option>Gerência de Festas</option>
-            <!-- ... -->
+    <form id="contactForm" class="contact-form" action="https://formspree.io/f/ellitedogarcom@gmail.com" method="POST">
+        <input type="text" name="nome" placeholder="Nome" required>
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="tel" name="telefone" placeholder="Telefone">
+        <select name="tipo-evento" required>
+            <option value="" disabled selected>Tipo de Evento</option>
+            <option value="Casamento">Casamento</option>
+            <option value="Evento Corporativo">Evento Corporativo</option>
+            <option value="Festa Infantil">Festa Infantil</option>
+            <option value="Gerência de Festas">Gerência de Festas</option>
+            <option value="Outro">Outro</option>
         </select>
-        <textarea placeholder="Mensagem" required></textarea>
+        <textarea name="mensagem" placeholder="Mensagem" required></textarea>
         <button type="submit">Enviar Mensagem</button>
+        <div id="formStatus" class="form-status"></div>
     </form>
 </section>
 

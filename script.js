@@ -186,3 +186,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// FORMULÁRIO DE CONTATO
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    const formStatus = document.getElementById('formStatus');
+    
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(contactForm);
+            const submitButton = contactForm.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            try {
+                // Mostrar estado de carregamento
+                submitButton.disabled = true;
+                submitButton.textContent = 'Enviando...';
+                
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    formStatus.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
+                    formStatus.className = 'form-status success';
+                    contactForm.reset();
+                } else {
+                    throw new Error('Erro ao enviar mensagem');
+                }
+            } catch (error) {
+                formStatus.textContent = 'Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente mais tarde ou entre em contato por WhatsApp.';
+                formStatus.className = 'form-status error';
+                console.error('Error:', error);
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+                
+                // Rolagem suave para mostrar o status
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                
+                // Esconder a mensagem após 5 segundos
+                setTimeout(() => {
+                    formStatus.style.opacity = '0';
+                    setTimeout(() => {
+                        formStatus.className = 'form-status';
+                        formStatus.style.opacity = '1';
+                    }, 500);
+                }, 5000);
+            }
+        });
+    }
+});
