@@ -514,7 +514,7 @@ header {
 .partners {
     padding: 4rem 5%;
     background: var(--black);
-    text-align: center;
+    text-align: left;
     overflow: hidden;
 }
 
@@ -639,7 +639,7 @@ header {
     padding: 6rem 5%;
     background: var(--white);
     color: var(--black);
-    text-align: center;
+    text-align: left;
     position: relative;
 }
 
