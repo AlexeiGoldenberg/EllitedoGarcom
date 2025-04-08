@@ -515,7 +515,7 @@ header {
     padding: 4rem 5%;
     background: var(--black);
     text-align: left;
-    overflow: hidden;
+    overflow: relative;
 }
 
 .partners h2 {
@@ -540,6 +540,7 @@ header {
     gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
 }
 
 .partner-card {
@@ -619,7 +620,7 @@ header {
     }
 
     .partners-grid {
-        grid-template-columns: 1fr; /* 1 coluna no mobile */
+        grid-template-columns: repeat (2, 1fr); /* 1 coluna no mobile */
         max-width: 90%;
         gap: 3rem;
     }
@@ -627,6 +628,7 @@ header {
     .partner-logo {
         width: 90%; /* Ocupa quase toda a tela */
         max-width: 250px;
+        margin: 0 auto;
     }
 
     .partner-name {
