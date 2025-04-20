@@ -340,6 +340,68 @@ header {
     }
 }
 
+/* Container de contato */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+    min-width: fit-content;
+}
+
+/* Número de telefone */
+.phone-number {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+    white-space: nowrap; /* Impede a quebra de linha */
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse */
+    text-overflow: ellipsis; /* Adiciona "..." se o texto for cortado (como fallback) */
+    min-width: fit-content; /* Ajusta a largura mínima ao conteúdo */
+}
+
+.phone-number:hover {
+    color: var(--gold);
+}
+
+
+
+/* Layout para mobile */
+@media (max-width: 1200px) {
+    .header-right {
+        gap: 2rem;
+    }
+    
+    .contact-info {
+        flex-direction: row;
+        align-items: center;
+        gap: 1.5rem;
+    }
+    
+    .phone-number {
+        font-size: 0.80rem;
+        white-space: nowrap;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+    .contact-info {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+    
+    .phone-number {
+        font-size: 0.8rem;
+    }
+}
+
 /* HERO SECTION */
 .hero {
     height: 100vh;
