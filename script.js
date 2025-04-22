@@ -118,73 +118,66 @@ function initPartnersAnimation() {
 document.addEventListener('DOMContentLoaded', initPartnersAnimation);
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Carrossel de Feedbacks
-    const carousel = document.querySelector('.testimonials-carousel');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
-    const dotsContainer = document.querySelector('.dots-container');
-    
-    if (carousel) {
-        const cards = document.querySelectorAll('.testimonial-card');
-        const cardWidth = cards[0].offsetWidth + 48; // width + gap
-        
-        // Criar dots de navegação
-        cards.forEach((_, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                goToSlide(index);
-            });
-            dotsContainer?.appendChild(dot);
-        });
-        
-        let currentIndex = 0;
-        const dots = document.querySelectorAll('.dot');
-        
-        function updateCarousel() {
-            carousel.scrollTo({
-                left: currentIndex * cardWidth,
-                behavior: 'smooth'
-            });
-            
-            // Atualizar dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentIndex);
-            });
-        }
-        
-        function goToSlide(index) {
-            currentIndex = index;
-            updateCarousel();
-        }
-        
-        nextBtn?.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % cards.length;
-            updateCarousel();
-        });
-        
-        prevBtn?.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + cards.length) % cards.length;
-            updateCarousel();
-        });
-        
-        // Auto-rotate (opcional)
-        setInterval(() => {
-            nextBtn?.click();
-        }, 5000);
-        
-        // Atualizar dots ao scroll manual
-        carousel.addEventListener('scroll', () => {
-            const newIndex = Math.round(carousel.scrollLeft / cardWidth);
-            if (newIndex !== currentIndex) {
-                currentIndex = newIndex;
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentIndex);
+    const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        speed: 600,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.next-btn',
+            prevEl: '.prev-btn',
+        },
+        breakpoints: {
+            // Mobile (1 card)
+            320: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                centeredSlides: true
+            },
+            // Tablet (2 cards)
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+                centeredSlides: false
+            },
+            // Desktop médio (3 cards)
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 40,
+                centeredSlides: false
+            },
+            // Desktop grande (3 cards com mais espaço)
+            1440: {
+                slidesPerView: 3,
+                spaceBetween: 50,
+                centeredSlides: false
+            }
+        },
+        // Efeito de transição suave
+        on: {
+            init: function() {
+                this.slides.forEach(slide => {
+                    slide.style.transform = 'scale(0.9)';
+                    slide.style.transition = 'transform 0.3s ease';
+                });
+            },
+            slideChange: function() {
+                this.slides.forEach((slide, index) => {
+                    if (index === this.activeIndex) {
+                        slide.style.transform = 'scale(1)';
+                    } else {
+                        slide.style.transform = 'scale(0.9)';
+                    }
                 });
             }
-        });
-    }
+        }
+    });
 });
 
 // FORMULÁRIO DE CONTATO
